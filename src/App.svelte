@@ -23,7 +23,48 @@
   // Actions for MAP scroller
   const mapActions = [
     () => {
-      map.fitBounds(mapbounds.ew);
+      // map.fitBounds(mapbounds.ew);
+      map.on("load", function () {
+        map.addSource("pop_density", {
+          type: "geojson",
+          data: "https://api.maptiler.com/data/1769d603-8d0f-49d2-810d-63ad6eb01b20/features.json?key=gOcDnGFbS89U5A6FqmcC",
+        });
+
+        map.addLayer({
+          id: "pop_choropleth",
+          source: "pop_density",
+          type: "fill",
+          paint: {
+            "fill-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "population"],
+              1,
+              "#edf8fb",
+              2,
+              "#d3e5f0",
+              5,
+              "#b9d2e6",
+              12,
+              "#a6bbd9",
+              35,
+              "#95a2cc",
+              85,
+              "#8b88bf",
+              249,
+              "#896bb1",
+              3461,
+              "#874ea2",
+              8783,
+              "#842f8f",
+              16039,
+              "#810f7c",
+            ],
+            "fill-opacity": 0.75,
+            "fill-outline-color": "#7f7f7f",
+          },
+        });
+      });
     },
     () => {
       map.fitBounds(mapbounds.fareham);
