@@ -9,17 +9,17 @@
   const key = "";
 
   const mapbounds = {
-    ew: [
-      [-5.816, 49.864],
-      [1.863, 55.872],
+    sg: [
+      [103.5997, 1.4761],
+      [104.0879, 1.1847],
     ],
-    fareham: [
-      [-1.228, 50.8368],
-      [-1.165, 50.8699],
+    tanglin: [
+      [103.7992, 1.3305],
+      [103.8386, 1.2841],
     ],
-    newport: [
-      [-3.0682, 51.5448],
-      [-2.917, 51.6258],
+    woodlands: [
+      [103.7469, 1.4906],
+      [103.8256, 1.3978],
     ],
   };
 
@@ -75,6 +75,61 @@
             ],
             "fill-opacity": 0.75,
             "fill-outline-color": "#7f7f7f",
+          },
+        });
+
+        // Green spaces
+        map.addSource("green_spaces", {
+          type: "geojson",
+          data: `https://api.maptiler.com/data/3e3800e4-4559-4148-90de-9d2a5b559961/features.json?key=${key}`,
+        });
+
+        map.addLayer({
+          id: "green_spaces",
+          type: "fill",
+          source: "green_spaces",
+          layout: { visibility: "none" },
+          paint: {
+            "fill-color": "#088",
+            "fill-opacity": 0,
+          },
+        });
+
+        //  Income by planning area
+        map.addSource("income_zones", {
+          type: "geojson",
+          data: `https://api.maptiler.com/data/ee8e7985-34d8-4c38-b305-1257936b4957/features.json?key=${key}`,
+        });
+
+        map.addLayer({
+          id: "income_zones",
+          type: "fill",
+          source: "income_zones",
+          layout: { visibility: "none" },
+          paint: {
+            "fill-color": [
+              "match",
+              ["get", "income_range"],
+              ["$3,000 - $3,999"],
+              "#D9ED92",
+              ["$4,000 - $4,999"],
+              "#B5E48C",
+              ["$5,000 - $5,999"],
+              "#99D98C",
+              ["$6,000 - $6,999"],
+              "#76C893",
+              ["$9,000 - $9,999"],
+              "#168AAD",
+              ["$10,000 - 10,999"],
+              "#1A759F",
+              ["$11,000 - 11,999"],
+              "#1E6091",
+              ["$12,000 - $14,999"],
+              "#184E77",
+              "rgba(0, 0, 0, 0.5)",
+            ],
+            "fill-opacity": 0.75,
+            "fill-outline-color": "#fff",
           },
         });
 
@@ -181,15 +236,36 @@
     },
     () => {
       map.setLayoutProperty("pop_choropleth", "visibility", "visible");
+      map.setLayoutProperty("calm_marker", "visibility", "visible");
       map.setLayoutProperty("boring_marker", "visibility", "none");
       map.setLayoutProperty("exciting_marker", "visibility", "none");
       map.setLayoutProperty("chaotic_marker", "visibility", "none");
+      map.setLayoutProperty("green_spaces", "visibility", "none");
     },
     () => {
-      map.fitBounds(mapbounds.newport);
+      map.fitBounds(mapbounds.sg);
+      map.setLayoutProperty("pop_choropleth", "visibility", "none");
+      map.setLayoutProperty("income_zones", "visibility", "none");
+      map.setLayoutProperty("green_spaces", "visibility", "visible");
+      map.setPaintProperty("green_spaces", "fill-opacity-transition", {
+        duration: 2000,
+      });
+
+      setTimeout(() =>
+        map.setPaintProperty("green_spaces", "fill-opacity", 0.5)
+      );
     },
     () => {
-      map.fitBounds(mapbounds.fareham);
+      map.setLayoutProperty("green_spaces", "visibility", "none");
+      map.setLayoutProperty("income_zones", "visibility", "visible");
+      map.fitBounds(mapbounds.tanglin);
+    },
+    () => {
+      map.fitBounds(mapbounds.woodlands);
+    },
+
+    () => {
+      map.fitBounds(mapbounds.sg);
     },
   ];
 
@@ -213,8 +289,7 @@
   <Scroller top={0.2} bottom={0.8} bind:index bind:offset bind:progress>
     <div slot="background">
       <p>
-        This is the background content, at index {index}. It will stay fixed in
-        place while the foreground scrolls over the top.
+        Index is {index}
       </p>
       <Map bind:map />
     </div>
@@ -241,12 +316,12 @@
       <section>This is the second section.</section>
       <section>This is the third section.</section>
       <section>This is the 4th section.</section>
+      <section>This is the 5th section.</section>
+      <section>This is the final section.</section>
     </div>
   </Scroller>
   <div><section>New section</section></div>
 </main>
-
-border: 1px solid #222222;
 
 <style>
   section {
