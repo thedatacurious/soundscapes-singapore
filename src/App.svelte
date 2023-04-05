@@ -1,5 +1,6 @@
 <script>
   import Map from "./lib/Map.svelte";
+  import Soundscape from "./lib/Soundscape.svelte";
   import Scroller from "@sveltejs/svelte-scroller";
 
   let index, indexPrev, offset, progress;
@@ -286,17 +287,35 @@
     and tranquility exist.
   </p>
 
+  <p>Listen to one soundscape below.</p>
+
+  <Soundscape src="/soundscape.mp3" />
+
+  <p>
+    But what exactly is a soundscape? It is all the audible sounds within an
+    area that give rise to a sense of place.
+  </p>
+  <p>
+    Using the ISO 12913-2 model, soundscapes can be categorized into four
+    quadrants, depending on how "pleasant" and "eventful" the sounds are to
+    people.
+  </p>
+
+  <img src="/perceptual_quadrants.png" alt="Diagram of perceptual quantrants" />
+
+  <p>
+    <a href="https://arxiv.org/abs/2206.03112">A study</a> identified 62 such soundscapes
+    by obtaining survey responses on each subregion in Singapore, before aggregating
+    and clustering those responses across the entire city.
+  </p>
+
   <Scroller top={0.2} bottom={0.8} bind:index bind:offset bind:progress>
     <div slot="background">
-      <p>
-        Index is {index}
-      </p>
       <Map bind:map />
     </div>
 
     <div slot="foreground">
       <section>
-        <p>This is the first section</p>
         <button class="button-calm" on:click={() => toggleLayer("calm_marker")}
           >Calm</button
         >
@@ -312,6 +331,10 @@
           class="button-chaotic"
           on:click={() => toggleLayer("chaotic_marker")}>Chaotic</button
         >
+        <p>
+          Click the buttons to see where the various types of soundscapes are
+          located
+        </p>
       </section>
       <section>This is the second section.</section>
       <section>This is the third section.</section>
@@ -329,22 +352,27 @@
   }
 
   .button-calm {
-    border: 2px solid #233d4d;
+    border: 3px solid #233d4d;
   }
 
   .button-boring {
-    border: 2px solid #a1c181;
+    border: 3px solid #a1c181;
   }
 
   .button-exciting {
-    border: 2px solid #fcca46;
+    border: 3px solid #fcca46;
   }
 
   .button-chaotic {
-    border: 2px solid #fe7f2d;
+    border: 3px solid #fe7f2d;
   }
 
   button:hover {
     transform: scale(1.05) rotate(-1deg);
+  }
+
+  img {
+    max-width: 360px;
+    margin: 0.5em 0 1em 0;
   }
 </style>
