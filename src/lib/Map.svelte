@@ -1,5 +1,5 @@
 <script>
-  import { setContext, onMount, createEventDispatcher } from "svelte";
+  import { onMount } from "svelte";
   import { Map } from "maplibre-gl";
 
   export let location = {
@@ -12,14 +12,6 @@
 
   let mapContainer;
   let options;
-
-  const dispatch = createEventDispatcher();
-
-  function sayHello() {
-    dispatch("message", {
-      text: "Hello!",
-    });
-  }
 
   if (location.bounds) {
     options = { bounds: location.bounds };
