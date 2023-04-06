@@ -71,8 +71,7 @@
         // Green spaces
         map.addSource("green_spaces", {
           type: "geojson",
-          data: "./data/transformed/greenspaces.geojson",
-          // data: `https://api.maptiler.com/data/3e3800e4-4559-4148-90de-9d2a5b559961/features.json?key=${key}`,
+          data: "https://raw.githubusercontent.com/thedatacurious/soundscapes-singapore/main/src/data/transformed/greenspaces.geojson",
         });
 
         map.addLayer({
