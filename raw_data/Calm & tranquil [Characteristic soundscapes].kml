@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name><![CDATA[Calm & tranquil [Characteristic soundscapes]]]></name>
+    <Style id="icon-1899-558B2F-normal">
+      <IconStyle>
+        <color>ff2f8b55</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-558B2F-highlight">
+      <IconStyle>
+        <color>ff2f8b55</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-558B2F">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-558B2F-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-558B2F-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>1.0</name>
+      <description><![CDATA[Latitude: 1.290393317849277<br>Longitude: 103.85100171586912]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.290393317849277</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.85100171586912</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.851001715869,1.29039331784928,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2.0</name>
+      <description><![CDATA[Latitude: 1.3548163<br>Longitude: 103.7762985]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3548163</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.7762985</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.7762985,1.3548163,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>3.0</name>
+      <description><![CDATA[Latitude: 1.3621168823434748<br>Longitude: 103.9467684523926]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3621168823434748</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.9467684523926</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.946768452393,1.36211688234347,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4.0</name>
+      <description><![CDATA[Latitude: 1.3444365<br>Longitude: 103.6339522]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3444365</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.6339522</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.6339522,1.3444365,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>5.0</name>
+      <description><![CDATA[Latitude: 1.3885076528356437<br>Longitude: 103.98845386826171]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3885076528356437</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.98845386826171</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.988453868262,1.38850765283564,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>6.0</name>
+      <description><![CDATA[Latitude: 1.4043555985447649<br>Longitude: 103.80361954399412]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.4043555985447649</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.80361954399412</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.803619543994,1.40435559854476,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>7.0</name>
+      <description><![CDATA[Latitude: 1.3011878485343893<br>Longitude: 103.91565722713013]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3011878485343893</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.91565722713013</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.91565722713,1.30118784853439,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8.0</name>
+      <description><![CDATA[Latitude: 1.408367897937551<br>Longitude: 103.90726277153318]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.408367897937551</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.90726277153318</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.907262771533,1.40836789793755,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>9.0</name>
+      <description><![CDATA[Latitude: 1.4411228637789677<br>Longitude: 103.72281986791992]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.4411228637789677</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.72281986791992</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.72281986792,1.44112286377897,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10.0</name>
+      <description><![CDATA[Latitude: 1.3341233982356602<br>Longitude: 103.72779804785156]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3341233982356602</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.72779804785156</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.727798047852,1.33412339823566,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11.0</name>
+      <description><![CDATA[Latitude: 1.3489419888221514<br>Longitude: 103.68768651030538]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3489419888221514</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.68768651030538</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.687686510305,1.34894198882215,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>12.0</name>
+      <description><![CDATA[Latitude: 1.4464854245902268<br>Longitude: 103.780502479001]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.4464854245902268</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.780502479001</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.780502479001,1.44648542459023,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>13.0</name>
+      <description><![CDATA[Latitude: 1.3748367<br>Longitude: 103.8455383]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.3748367</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.8455383</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.8455383,1.3748367,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>14.0</name>
+      <description><![CDATA[Latitude: 1.32055905531803<br>Longitude: 103.81628674754636]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.32055905531803</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.81628674754636</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.816286747546,1.32055905531803,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15.0</name>
+      <description><![CDATA[Latitude: 1.4513905100777664<br>Longitude: 103.84054104515376]]></description>
+      <styleUrl>#icon-1899-558B2F</styleUrl>
+      <ExtendedData>
+        <Data name="Latitude">
+          <value>1.4513905100777664</value>
+        </Data>
+        <Data name="Longitude">
+          <value>103.84054104515376</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.840541045154,1.45139051007777,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
