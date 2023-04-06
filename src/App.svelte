@@ -7,8 +7,7 @@
   let index, indexPrev, offset, progress;
   let map = null;
 
-  // TO CHANGE FOR BUILD; FIND SECURE WAY
-  const key = "";
+  const key = process.env.MAPTILER_KEY;
 
   const mapbounds = {
     sg: [
@@ -40,7 +39,6 @@
       map.on("load", function () {
         // population density choropleth
         map.addSource("pop_density", {
-          type: "geojson",
           data: `https://api.maptiler.com/data/1769d603-8d0f-49d2-810d-63ad6eb01b20/features.json?key=${key}`,
         });
 
