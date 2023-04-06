@@ -1,7 +1,6 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
+  import { setContext, onMount, createEventDispatcher } from "svelte";
   import { Map } from "maplibre-gl";
-  import "maplibre-gl/dist/maplibre-gl.css";
 
   export let location = {
     bounds: [
@@ -14,15 +13,19 @@
   let mapContainer;
   let options;
 
+  const dispatch = createEventDispatcher();
+
+  function sayHello() {
+    dispatch("message", {
+      text: "Hello!",
+    });
+  }
+
   if (location.bounds) {
     options = { bounds: location.bounds };
   } else if (location.lon && location.lat) {
     options = { center: [location.lon, location.lat] };
   }
-
-  // if (location.zoom) {
-  //   options.zoom = location.zoom;
-  // }
 
   onMount(() => {
     map = new Map({
@@ -54,7 +57,9 @@
 
   .map-wrap {
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
-    height: 35vh;
+    height: 50vh;
   }
 </style>

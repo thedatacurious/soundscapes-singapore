@@ -2,6 +2,7 @@
   import Map from "./lib/Map.svelte";
   import Soundscape from "./lib/Soundscape.svelte";
   import Scroller from "@sveltejs/svelte-scroller";
+  import maplibregl from "maplibre-gl";
 
   let index, indexPrev, offset, progress;
   let map = null;
@@ -55,26 +56,16 @@
               ["get", "population"],
               1,
               "#edf8fb",
-              2,
-              "#d3e5f0",
               5,
-              "#b9d2e6",
-              12,
-              "#a6bbd9",
+              "#b3cde3",
               35,
-              "#95a2cc",
-              85,
-              "#8b88bf",
+              "#8c96c5",
               249,
-              "#896bb1",
-              3461,
-              "#874ea2",
+              "#8856a7",
               8783,
-              "#842f8f",
-              16039,
               "#810f7c",
             ],
-            "fill-opacity": 0.75,
+            "fill-opacity": 1,
             "fill-outline-color": "#7f7f7f",
           },
         });
@@ -91,7 +82,13 @@
           source: "green_spaces",
           layout: { visibility: "none" },
           paint: {
-            "fill-color": "#088",
+            "fill-color": [
+              "match",
+              ["get", "feature_type"],
+              ["park", "nature_reserve", "forest", "wetland"],
+              "#619B8A",
+              "#618392",
+            ],
             "fill-opacity": 0,
           },
         });
@@ -309,9 +306,47 @@
     and clustering those responses across the entire city.
   </p>
 
-  <Scroller top={0.2} bottom={0.8} bind:index bind:offset bind:progress>
+  <Scroller
+    top={0.2}
+    bottom={0.8}
+    threshold={0.65}
+    bind:index
+    bind:offset
+    bind:progress
+  >
     <div slot="background">
       <Map bind:map />
+      {#if +index === 1}
+        <div class="legend">
+          <h4>Population density (People per 400m hex grid)</h4>
+          <div><span style="background-color: #edf8fb" />1-4</div>
+          <div><span style="background-color: #b3cde3" />5-35</div>
+          <div><span style="background-color: #8c96c5" />36-248</div>
+          <div><span style="background-color: #8856a7" />249-8,782</div>
+          <div><span style="background-color: #810f7c" />8,783-38.556</div>
+        </div>
+      {/if}
+      {#if +index === 5}
+        <div class="legend">
+          <h4>Median income bracket of region's residents</h4>
+          <div><span style="background-color: #D9ED92BF" />$3,000 - $3,999</div>
+          <div><span style="background-color: #B5E48CBF" />$4,000 - $4,999</div>
+          <div><span style="background-color: #99D98CBF" />$5,000 - $5,999</div>
+          <div><span style="background-color: #76C893BF" />$6,000 - $6,999</div>
+          <div>
+            <span style="background-color: #168AADBF" />$9,000 - $9,999
+          </div>
+          <div>
+            <span style="background-color: #1A759FBF" />$10,000 - 10,999
+          </div>
+          <div>
+            <span style="background-color: #1E6091BF" />$11,000 - 11,999
+          </div>
+          <div>
+            <span style="background-color: #184E77BF" />$12,000 - $14,999
+          </div>
+        </div>
+      {/if}
     </div>
 
     <div slot="foreground">
@@ -331,26 +366,88 @@
           class="button-chaotic"
           on:click={() => toggleLayer("chaotic_marker")}>Chaotic</button
         >
-        <p>
-          Click the buttons to see where the various types of soundscapes are
-          located
-        </p>
+        <div class="overlay">
+          <p>
+            Click the buttons to see where the various types of soundscapes are
+            located in Singapore.
+          </p>
+        </div>
       </section>
-      <section>This is the second section.</section>
-      <section>This is the third section.</section>
-      <section>This is the 4th section.</section>
-      <section>This is the 5th section.</section>
-      <section>This is the final section.</section>
+      <section>
+        <div class="overlay">
+          <p>
+            What features make a calm and tranquil (C&T) soundscape different
+            from another types?
+          </p>
+          <p>
+            Perhaps unsurprisingly, such soundscapes tend to be found in
+            relatively less dense areas. The areas that they overlap with have
+            an average of 4,818 people per 400m hexagon. That's less than half
+            the population density for other soundscape types.
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="overlay">
+          <p>
+            Many of the C&T sites (60%) are found in green spaces, ranging from
+            parks to nature reserves. The audio at the beginning was taken from
+            Sungei Buloh Wetland Reserve, one of such sites.
+          </p>
+          <p>
+            However, being surrounded by greenery isn't sufficient. Roughly 10%
+            of soundscapes identified as boring and lifeless are also found in
+            green spaces. More investigation is required.
+          </p>
+
+          <p>
+            Regardless, C&T sites are a luxury in a busy city. This prompts the
+            question: are there more of those soundscapes in wealthier areas?
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="overlay">
+          <p>
+            This is Tanglin. It's a wealthy region, its residents having the
+            highest median income bracket. The region has one C&T site, the
+            Botanic Gardens Eco Lake.
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="overlay">
+          <p>
+            If we head over to Woodlands, we'll see the region also has one C&T
+            site, Admiralty Park. Its residents, together with those of nearby
+            Yishun, have the lowest median income bracket.
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="overlay">
+          <p>
+            C&T sites aren't clustered around wealthy regions. In fact, they are
+            fairly scattered across Singapore.
+          </p>
+          <p>
+            This is good news for those of us who like to explore, get lost, and
+            find inner peace.
+          </p>
+        </div>
+      </section>
     </div>
   </Scroller>
-  <div><section>New section</section></div>
 </main>
 
-<style>
-  section {
-    height: 80vh;
-  }
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+  />
+</svelte:head>
 
+<style>
   .button-calm {
     border: 3px solid #233d4d;
   }
@@ -371,8 +468,27 @@
     transform: scale(1.05) rotate(-1deg);
   }
 
+  div.overlay {
+    position: absolute;
+    background-color: #619b8a;
+    opacity: 0.7;
+    padding: 12px;
+  }
+
   img {
     max-width: 360px;
     margin: 0.5em 0 1em 0;
+  }
+
+  .legend div span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 13px;
+    margin-right: 5px;
+    width: 13px;
+  }
+
+  section {
+    height: 80vh;
   }
 </style>
