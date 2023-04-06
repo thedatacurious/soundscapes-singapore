@@ -468,8 +468,8 @@
 
   div.overlay {
     position: absolute;
-    background-color: #619b8a;
-    opacity: 0.7;
+    /* background-color: #619b8a;
+    opacity: 0.7; */
     padding: 12px;
   }
 
