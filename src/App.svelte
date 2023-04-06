@@ -39,7 +39,7 @@
         // population density choropleth
         map.addSource("pop_density", {
           type: "geojson",
-          data: "src/data/transformed/pop_density.geojson",
+          data: "./data/transformed/pop_density.geojson",
           // data: `https://api.maptiler.com/data/1769d603-8d0f-49d2-810d-63ad6eb01b20/features.json?key=${key}`,
         });
 
@@ -72,7 +72,7 @@
         // Green spaces
         map.addSource("green_spaces", {
           type: "geojson",
-          data: "src/data/transformed/greenspaces.geojson",
+          data: "./data/transformed/greenspaces.geojson",
           // data: `https://api.maptiler.com/data/3e3800e4-4559-4148-90de-9d2a5b559961/features.json?key=${key}`,
         });
 
@@ -96,7 +96,7 @@
         //  Income by planning area
         map.addSource("income_zones", {
           type: "geojson",
-          data: "src/data/transformed/zones_income.geojson",
+          data: "./data/transformed/zones_income.geojson",
           // data: `https://api.maptiler.com/data/ee8e7985-34d8-4c38-b305-1257936b4957/features.json?key=${key}`,
         });
 
@@ -140,7 +140,7 @@
 
         map.addSource("calm_sites", {
           type: "geojson",
-          data: "src/data/transformed/calm_sites.geojson",
+          data: "https://raw.githubusercontent.com/thedatacurious/soundscapes-singapore/main/src/data/transformed/calm_sites.geojson",
           // data: `https://api.maptiler.com/data/e76b0250-3175-46bc-9058-c03c74c4de32/features.json?key=${key}`,
         });
 
@@ -166,7 +166,7 @@
 
         map.addSource("boring_sites", {
           type: "geojson",
-          data: "src/data/transformed/boring_sites.geojson",
+          data: "./data/transformed/boring_sites.geojson",
           // data: `https://api.maptiler.com/data/7d6165ea-2836-4d19-8f67-70c8ca965f8c/features.json?key=${key}`,
         });
 
@@ -192,7 +192,7 @@
 
         map.addSource("exciting_sites", {
           type: "geojson",
-          data: "src/data/transformed/exciting_sites.geojson",
+          data: "./data/transformed/exciting_sites.geojson",
           // data: `https://api.maptiler.com/data/b3be5c76-71a4-4ed4-a0d7-e7e453aa6e2c/features.json?key=${key}`,
         });
 
@@ -218,7 +218,7 @@
 
         map.addSource("chaotic_sites", {
           type: "geojson",
-          data: "src/data/transformed/chaotic_sites.geojson",
+          data: "./data/transformed/chaotic_sites.geojson",
           // data: `https://api.maptiler.com/data/dfd160c9-2963-4f11-a344-0b0504535286/features.json?key=${key}`,
         });
 
