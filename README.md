@@ -1,47 +1,33 @@
-# Svelte + Vite
+# Soundscapes in Singapore
 
-This template should help get you started developing with Svelte in Vite.
+See the project [here](https://soundscapes-singapore.vercel.app/)
 
-## Recommended IDE Setup
+## Objective
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+This scrolly-telling piece is an exploration of calm and tranquil soundscapes in Singapore and what may make them different from other types of soundscapes. 
 
-## Need an official Svelte framework?
+It is a submission for the Cartography module of the Masters in Visual Tools to Empower Citizens.  
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## Data & methodology 
 
-## Technical considerations
+In order of appearance: 
 
-**Why use this over SvelteKit?**
+- **4 quadrants of soundscape sites:** Used KML files from the publication: Ooi, K.; Lam, B.; Hong, J.; Watcharasupat, K. N.; Ong, Z.-T.; Gan, W.-S. Singapore Soundscape Site Selection Survey (S5): Identification of Characteristic Soundscapes of Singapore via Weighted k-means Clustering. Sustainability. 14 (2022) 7485. https://doi.org/10.3390/su14127485 
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- **Population density:** Used Kontur Population 400m H3 Hexagon dataset. I decided to use this dataset over a government dataset on resident households as it was a composite dataset aimed at determining human presence, regardless of residency status. This would be more accurate for showcasing crowded areas. To determine the data bins for the choropleth, I used QGIS quantile (equal count) classification. Determined average population density of each soundscape type by intersecting features. 
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- **Green spaces in Singapore:** Queried Open Street Map data for a more comprehensive coverage as the available government dataset only included areas under the purview of the public agency, NParks. Determined proportion of soundscape type that fall within "green spaces" boundaries (including natural water features) by intersecting features. 
+ 
+- **Singapore's regions (planning areas of residence) by median income bracket:** There's no ready dataset so I had to create my own proxy. Calculated the median income range for each region from 2020 Census data on residents'  gross monthly income from work and combined the results with spatial data on planning areas. 
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+For spatial analysis and transformation of data into GeoJSON, I used mainly the sf and osmdata packages in R. The code script can be found [here](https://github.com/thedatacurious/soundscapes-singapore/blob/main/src/analysis_script.R).  
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+The project was built using Maplibre and Svelte (with the Svelte-Scroller component for scrolly effect). 
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+## Challenges faced & approaches 
 
-**Why include `.vscode/extensions.json`?**
+- **Coding in R:** I wanted to make this project as reproducible as possible. However, this was my first time using R for spatial analysis so I had to familiarize myself with the basics of handling spatial data in R and the landscape of relevant packages.  
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+- **Creating user interaction effects within a scrolly:** I wanted to create hover effects so that a popup would reveal information about each region, but it didn't work out. In the end, I opted for a more limited static legend. Ideally, I would have componentized my map more in Svelte too.
 
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+- **Getting Env variables to work with vite and vercel:** I had initially hosted my map data on Maptiler, but I couldn't safely deploy without exposing my API key to the client. Multiple workarounds failed, so I used individual GitHub links for my data sources instead of calling the Maptiler API.  
